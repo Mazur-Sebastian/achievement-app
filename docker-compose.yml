@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:alpine
+    container_name: db
+    restart: unless-stopped
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+
+  backend:
+    build: ./backend
+    restart: always
+    container_name: backend-achievement
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend-service-achievement
