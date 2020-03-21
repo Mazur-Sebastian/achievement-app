@@ -4,6 +4,7 @@ services:
   backend:
     volumes:
       - ./backend:/backend
+      - node_modules_backend:/backend/node_modules
     ports:
       - 5000:5000
 
@@ -15,7 +16,7 @@ services:
     build:
       dockerfile: Dockerfile
     volumes:
-      - ./frontend:/frontend:delegated
-      - ./frontend:/node_modules
+      - ./frontend:/frontend
+      - node_modules_frontend:/frontend/node_modules
     ports:
       - '3000:3000'

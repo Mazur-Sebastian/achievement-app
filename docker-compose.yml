@@ -6,11 +6,9 @@ services:
     container_name: db
     restart: unless-stopped
     volumes:
-      - /var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: db
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - .env
 
   backend:
     build: ./backend
@@ -22,6 +20,12 @@ services:
       - db
 
   frontend:
+    container_name: frontend-service-achievement
+    restart: unless-stopped
     build:
       context: ./frontend
-    container_name: frontend-service-achievement
+
+volumes:
+  pgdata:
+  node_modules_backend:
+  node_modules_frontend:

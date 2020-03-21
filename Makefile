@@ -5,7 +5,8 @@ build-dev:
 	docker-compose $(dev-dockerfile) build
 
 dev:
-	docker-compose $(dev-dockerfile) up
+	docker-compose $(dev-dockerfile) up -V
 
 generate-documentation:
 	docker exec -it backend-achievement yarn run documentation
+	
