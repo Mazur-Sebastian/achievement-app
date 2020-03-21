@@ -3,7 +3,7 @@ version: '3.7'
 services:
   backend:
     volumes:
-      - ./backend:/backend
+      - ./backend/src:/backend/src
       - node_modules_backend:/backend/node_modules
     ports:
       - 5000:5000
@@ -16,7 +16,7 @@ services:
     build:
       dockerfile: Dockerfile
     volumes:
-      - ./frontend:/frontend
+      - ./frontend/src:/frontend/src
       - node_modules_frontend:/frontend/node_modules
     ports:
       - '3000:3000'
